@@ -1,11 +1,14 @@
 {
-  "updatedAt": null,
-  "trophies": 131238,
-  "highestTrophies": 131238,
+  "updatedAt": "2026-09-01T01:26:04.512Z",
+  "trophies": 131248,
+  "highestTrophies": 131248,
   "expLevel": 421,
-  "victories3v3": 53604,
+  "victories3v3": 53605,
   "soloVictories": 2106,
   "duoVictories": 4116,
   "club": "snakeballs",
-  "bestBrawler": { "name": "CROW", "trophies": 2181 }
+  "bestBrawler": {
+    "name": "CROW",
+    "trophies": 2161
+  }
 }
