@@ -1,0 +1,33 @@
+name: Actualizar stats de Brawl Stars
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"   # cada 30 minutos
+  workflow_dispatch: {}       # también se puede correr manual desde la pestaña Actions
+
+permissions:
+  contents: write
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Consultar la API de Brawl Stars
+        env:
+          BRAWL_API_TOKEN: ${{ secrets.BRAWL_API_TOKEN }}
+          PLAYER_TAG: "GRPCRQVQ"
+        run: node scripts/fetch-stats.mjs
+
+      - name: Guardar cambios si hay
+        run: |
+          git config user.name "brawl-stats-bot"
+          git config user.email "actions@github.com"
+          git add stats.json
+          git diff --cached --quiet || git commit -m "Actualizar stats de Brawl Stars"
+          git push
